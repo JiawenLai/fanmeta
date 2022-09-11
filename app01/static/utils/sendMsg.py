@@ -1,10 +1,11 @@
 import requests
 import json
-from ReadYaml import read_yaml
+from app01.static.utils.ReadYaml import read_yaml
+import os
 
 
 def send(map_id, p_x, p_y, start_time, finish_time):
-    config = read_yaml("../config.yaml")
+    config = read_yaml(os.path.abspath(os.path.dirname(__file__))+"/config.yaml")
     channel_id = config["channel_id"]
     token = config["token"]
     nonce = config["nonce"]
@@ -29,4 +30,6 @@ def send(map_id, p_x, p_y, start_time, finish_time):
     print(json.dumps(response.request.body))
 
 
-send(1, 10, 20, "2022/09/29 23:59:00", "2023/07/31 22:00:00")
+# send(1, 10, 20, "2022/09/29 23:59:00", "2023/07/31 22:00:00")
+print(os.path.abspath(os.path.dirname(__file__)))
+print(os.getcwd())
