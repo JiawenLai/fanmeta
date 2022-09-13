@@ -9,7 +9,7 @@ def send(map_id, p_x, p_y, start_time, finish_time):
     channel_id = config["channel_id"]
     token = config["token"]
     nonce = config["nonce"]
-    url = config["newtest_url"]+"/api/message/send"
+    url = config["newtest_url"]+"api/message/send"
     headers = {
         "Authorization": token
     }
@@ -25,11 +25,4 @@ def send(map_id, p_x, p_y, start_time, finish_time):
     }
 
     response = requests.post(url=url, data=data, headers=headers)
-    print(response.text)
-    print(response.request.headers)
-    print(json.dumps(response.request.body))
-
-
-# send(1, 10, 20, "2022/09/29 23:59:00", "2023/07/31 22:00:00")
-print(os.path.abspath(os.path.dirname(__file__)))
-print(os.getcwd())
+    print(response.status_code)
